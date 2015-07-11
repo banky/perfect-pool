@@ -21,7 +21,10 @@ class GameConstant {
 			pocket_radius = p_radius;
 			pocket_offset = p_offset;
 		}
-		
+		GameConstant ()
+		{
+			//HI
+		}
 	private:
 		double alpha;
 		double dt;

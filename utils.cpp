@@ -20,25 +20,6 @@ void output (ostream &out, Shot* shots, int length)
 	}
 }
 
-int getNextInt(istream& in) {
-	char c = 'l';
-	while(c!='='){
-		in >> c;
-	}
-	int n;
-	in >> n;
-	return n;
-}
-double getNextDouble(istream& in) {
-	char c = 'l';
-	while(c!='='){
-		in >> c;
-	}
-	double d;
-	in >> d;
-	return d;
-}
-
 Ball getBallFromInput(istream& in, int ballNum) {
 	char c = 'l';
 	while(c!='[') {

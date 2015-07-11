@@ -9,6 +9,9 @@ class TableState {
 		TableState();
 		TableState update (int t);
 		int c_time;
+		bool collisionWall (Ball b);
+		bool collisionBall (int v);
+		Ball whoHit (int v);
 	private:
 		Hole* holes;
 		Ball* balls;

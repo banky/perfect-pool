@@ -1,7 +1,7 @@
 #include "Ball_Class.hpp"
+#include "position.hpp"
 #include <cmath>
 
-<<<<<<< HEAD
 //TODO: I'm not too sure how to get the mass value
 int mass;
 
@@ -10,32 +10,36 @@ double dt = 0.001;
 int tableLength;
 int tableWidth;
 
-int ball::get_x_speed () {
+Ball::Ball()
+{
+	
+}
+int Ball::get_x_speed () {
     return x_speed;
 }
-int ball::get_y_speed () {
+int Ball::get_y_speed () {
     return y_speed;
 }
-int ball::get_value () {
+int Ball::get_value () {
 	return value;
 }
-int ball::get_postion () {
+int Ball::get_postion () {
 	return true; //should be x;
 }
-int ball::get_id () {
+int Ball::get_id () {
 	return id;
 }
-ball::ball (int x1, int y, int v,int i) {
+Ball::Ball (int x1, int y, int v,int i) {
     position = Position(x1,y);
 	value = v;
 	id =i;
 }
-ball::getRadius() {
+int Ball::getRadius() {
 	return radius;
 }
 
-ball::ball_collision(ball b) {
-	int d = sqrt(pow((position.x - b.position.x),2) + pow(pow((position.y - b.position.y), 2)));
+void Ball::ballCollision(Ball b) {
+	int d = sqrt(pow((position.x - b.position.x),2) + pow((position.y - b.position.y), 2));
 	int nx = (b.position.x - position.x)/d;
 	int ny = (b.position.y - position.y)/d;
     int p = (2 * (x_speed * nx + y_speed * ny - b.x_speed * nx - b.y_speed * ny))/(mass + mass);
@@ -50,12 +54,12 @@ ball::ball_collision(ball b) {
     b.position.y += b.y_speed * dt;
 }
 
-ball::table_collision() {
+void Ball::tableCollision() {
     if (((position.x - radius) < 0) || ((position.x + radius) > tableWidth)) {
 		x_speed *= -1;
 		position.x += x_speed * dt;
 	}
-	if (((position.y - radius < 0) || ((position.y + radius) > length))) {
+	if (((position.y - radius < 0) || ((position.y + radius) > tableLength))) {
 		y_speed *= -1;
 		position.y += y_speed * dt;
 	}

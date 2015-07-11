@@ -1,5 +1,6 @@
 #include "tableState.hpp"
 #include "Ball_Class.hpp"
+#include "Hole.hpp"
 
 TableState TableState::update (int ms)
 {
@@ -14,8 +15,6 @@ TableState TableState::update (int ms)
 }
 
 TableState::TableState() {
-	holesT = new holes [6];
-	ballsT = new ball  [11];
-	holes = new Position[6];
-	balls = new Position[11];
+	holes = new Hole[6];
+	balls = new Ball[11];
 }

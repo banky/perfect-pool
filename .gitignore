@@ -1,2 +1,4 @@
 main.cpp
-*.gch
+*.hpp.gch
+*.o
+a.out

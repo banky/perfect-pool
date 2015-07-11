@@ -4,12 +4,12 @@
 #include <cmath>
 bool TableState::collisionWall (Ball b)
 {
-	//extern GameConstants gc; 
-	for(int i=0;i<14;i++)
+	
+	for(int i=0;i<15;i++)
 	{
-		if (b.position.y >= 10) //gc.Length())
+		if (b.position.y >= gc.Length())
 			return true;
-		if (b.position.x >= 10) //gc.Width())
+		if (b.position.x >= gc.Width())
 			return true; 
 	}
 	return false; 
@@ -23,7 +23,7 @@ bool TableState::collisionBall (int v)
 			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r)
 				return true;
 	}
-	for(int i =14; i>v;i--)
+	for(int i =15; i>v;i--)
 	{
 		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r)
 			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r)
@@ -40,7 +40,7 @@ Ball TableState::whoHit (int v)
 				return balls[i];
 		
 	}
-	for(int i =14; i>v;i--)
+	for(int i =15; i>v;i--)
 	{
 		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r)
 			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r)
@@ -54,7 +54,7 @@ TableState TableState::update (int ms)
 	if (ms > ctime)
 	for(int cms=ctime; cms<ms; cms++)
 	{
-		for(int i=0;i<14;i++)
+		for(int i=0;i<15;i++)
 		{
 			balls[i].position.x += balls[i].x_speed;
 			balls[i].position.y += balls[i].y_speed;
@@ -72,5 +72,5 @@ TableState TableState::update (int ms)
 
 TableState::TableState() {
 	holes = new Hole[6];
-	balls = new Ball[15];
+	balls = new Ball[16];
 }

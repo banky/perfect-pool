@@ -35,15 +35,15 @@ Ball TableState::whoHit (int v)
 	int r = balls[v].getRadius();
 	for(int i=0; i <v; i++)
 	{
-		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r)
-			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r)
+		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r+2)
+			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r+2)
 				return balls[i];
 		
 	}
 	for(int i =15; i>v;i--)
 	{
-		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r)
-			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r)
+		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r+2)
+			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r+2)
 				return balls[i];
 	}
 }
@@ -73,6 +73,13 @@ TableState TableState::update (int ms)
 				balls[i].x_speed = 0;
 			if (balls[i].y_speed <= gc.VelocityThreshold())
 				balls[i].y_speed = 0;
+			/*
+				1- if ball is in hole 
+					set speed to 0,0 
+					location to -1,-1
+				2- if white is in whole- ID of one 
+					set new location
+			*/
 		}		
 	}
 }

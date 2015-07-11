@@ -3,7 +3,6 @@
 
 class GameConstant {
 	public:
-		GameConstant(){}
 		GameConstant(
 		double alfa, 			double dtime, 
 		double threshold, 	int shots, int max_x, int max_y,  
@@ -23,7 +22,7 @@ class GameConstant {
 		}
 		GameConstant ()
 		{
-			//HI
+			//hI
 		}
 	private:
 		double alpha;

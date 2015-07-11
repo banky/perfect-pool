@@ -29,7 +29,8 @@ class TableState {
 		{
 			return balls;
 		}
-	private:
+		
+		
 		Hole* holes;
 		Ball* balls;
 };

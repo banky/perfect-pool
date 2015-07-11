@@ -1,7 +1,7 @@
 #include "Ball_Class.hpp"
 #include "Hole.hpp"
 #include "position.hpp"
-#include "Ball_Class"
+#include "tableState.hpp"
 #include <cmath>
 
 //TODO: I'm not too sure how to get the mass value
@@ -62,32 +62,6 @@ void Ball::tableCollision() {
 	}
 }
 
-
-double velocityFromDistance(int distance) {
-	//assume ball needs to sink within 5 seconds
-	//math and shit
-	//note log is actually ln
-	GameConstant gc;
-	return (distance * gc.Alpha() / (log(5) - 1) );
-}
-
-//shots should have length 6
-void Ball::velocityToGetBallIn (TableState tableState, Shot* shots) {
-	GameConstant gc = GameConstant.getInstance();
-	for (int i = 0; i < 6; i++) {
-		Hole hole = tablestate.holes[i];
-		if(!isBallInLine(hole, tableState) {
-			int dx = this.position.x - hole.position.x;
-			int dy = this.position.y - hole.position.y;
-			
-			double vx = velocityFromDistance(dx);
-			double vy = velocityFromDistance(dy);
-			
-			shots[i] = Shot(vx, vy, Position());
-		}
-	}
-}
-
 //Check if there is a ball between our current ball and a hole
 bool Ball::isLineFree (Hole hole, TableState tableState) {
 	int length = sizeof(tableState.balls)/sizeof(tableState.balls[0]);
@@ -108,4 +82,3 @@ bool Ball::isLineFree (Hole hole, TableState tableState) {
 	}
 	return true;
 }
-

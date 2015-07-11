@@ -51,27 +51,27 @@ void Ball::ballCollision(Ball b) {
     b.position.y += b.y_speed * dt;
 }
 
-void Ball::tableCollision() {
-    if (((position.x - radius) < 0) || ((position.x + radius) > tableWidth)) {
+void tableCollision(Ball ball) {
+    if (((ball.position.x - radius) < 0) || ((ball.position.x + radius) > tableWidth)) {
 		x_speed *= -1;
-		position.x += x_speed * dt;
+		ball.position.x += x_speed * dt;
 	}
-	if (((position.y - radius < 0) || ((position.y + radius) > tableLength))) {
+	if (((ball.position.y - radius < 0) || ((ball.position.y + radius) > tableLength))) {
 		y_speed *= -1;
-		position.y += y_speed * dt;
+		ball.position.y += y_speed * dt;
 	}
 }
 
 //Check if there is a ball between our current ball and a hole
-bool Ball::isLineFree (Hole hole, TableState tableState) {
+bool isLineFree (Ball ball, Hole hole, TableState tableState) {
 	int length = sizeof(tableState.balls)/sizeof(tableState.balls[0]);
-	int distanceToHole = sqrt(pow((position.x - hole.position.x),2) + pow((position.y - hole.position.y),2));
-	int distanceInX = hole.position.x - position.x;
-	int distanceInY = hole.position.y - position.y;
+	int distanceToHole = sqrt(pow((ball.position.x - hole.position.x),2) + pow((ball.position.y - hole.position.y),2));
+	int distanceInX = hole.position.x - ball.position.x;
+	int distanceInY = hole.position.y - ball.position.y;
 	for(int i = 0; i < length; i++) {
-		int tempBallX = position.x;
-		int tempBallY = position.y;
-		while(sqrt(pow((position.x - hole.position.x),2) + pow((position.y - hole.position.y),2)) <= holeRadius) {
+		int tempBallX = ball.position.x;
+		int tempBallY = ball.position.y;
+		while(sqrt(pow((ball.position.x - hole.position.x),2) + pow((ball.position.y - hole.position.y),2)) <= holeRadius) {
 			if(pow((tempBallX - tableState.balls[i].position.x),2) < radius*2) {
 				return false;
 			}

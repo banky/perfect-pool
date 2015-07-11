@@ -81,23 +81,24 @@ TableState TableState::update (int ms)
 			
 			for(int j = 0; j < 6; j++) {
 				if(sqrt(pow((balls[i].position.x - holes[j].position.x),2) + pow((balls[i].position.y - holes[j].position.y),2))){
+					//Set the white ball position to a random location
 					if(balls[i].get_id() == 1) {
-						balls[i].position.x = rand() % tableLength + (tableLength/2);
+						balls[i].position.y = rand() % tableLength + (tableLength/2);
 						balls[i].position.x = rand() %tableWidth;
+					
+						//If the ball is on another ball, try to place it elsewhere
+						while(ballIsOnAnother(balls[i].position.x, balls[i].position.y)) {	
+							balls[i].position.y = rand() % tableLength + (tableLength/2);
+							balls[i].position.x = rand() %tableWidth;
+						}
 					}
+
 					balls[i].x_speed = 0;
 					balls[i].y_speed = 0;
 					balls[i].position.x = -10;
 					balls[i].position.y = -10;
 				}
 			}
-			/*
-				1- if ball is in hole 
-					set speed to 0,0 
-					location to -1,-1
-				2- if white is in whole- ID of one 
-					set new location
-			*/
 		}
 	}
 }

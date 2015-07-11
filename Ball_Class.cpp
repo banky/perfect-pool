@@ -1,6 +1,7 @@
 #include "Ball_Class.hpp"
 #include "Hole.hpp"
 #include "position.hpp"
+#include "Ball_Class"
 #include <cmath>
 
 //TODO: I'm not too sure how to get the mass value

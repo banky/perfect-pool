@@ -67,7 +67,8 @@ double velocityFromDistance(int distance) {
 	//assume ball needs to sink within 5 seconds
 	//math and shit
 	//note log is actually ln
-	return (distance + (0.5 * log(5))) / 5.0;
+	GameConstant gc;
+	return (distance * gc.Alpha() / (log(5) - 1) );
 }
 
 //shots should have length 6

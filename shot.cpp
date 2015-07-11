@@ -5,3 +5,8 @@ Shot::Shot(int x, int y, Position p) {
 	yVel = y;
 	resetPosition = p;
 }
+
+Shot::random(GameConstant gc) {
+	xVel = rand() % gc.MaxXVelocity();
+	yVel = rand() % gc.MaxYVelocity();
+}

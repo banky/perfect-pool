@@ -35,12 +35,34 @@ bool isBallInLine (Hole hole, TableState tableState) {
 	}
 }
 
-void Ball::velocityToGetBallIn (TableState tableState) {
-    int length = sizeof(tableState.holes)/sizeof(tablState.holes[0]);
-	for (int i = 0; i < length; i++) {
+double velocityFromDistance(int distance) {
+	//assume ball needs to sink within 5 seconds
+	//math and shit
+	//note log is actually ln
+	GameConstant gc;
+	return (distance * gc.Alpha() / (log(5) - 1) );
+}
+
+//shots should have length 6
+//returns 0 if not possible
+void velocityToGetBallIn (Ball ball, Hole hole, int* velXOut, int* velYOut) {
+	GameConstant gc = GameConstant.getInstance();
+	if(!isBallInLine(hole, tableState) {
+		int dx = this.position.x - hole.position.x;
+		int dy = this.position.y - hole.position.y;
 		
-	
+		double vx = velocityFromDistance(dx);
+		double vy = velocityFromDistance(dy);
+		
+		velXOut = (int) vx + 5;
+		velYOut = (int) vy + 5;
+		
+	} else {
+		velXOut = 0;
+		velYOut = 0;
 	}
+
+}
 
 
 

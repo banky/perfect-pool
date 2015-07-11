@@ -53,6 +53,15 @@ Ball TableState::whoHit (int v)
 	}
 }
 
+ballIsOnAnother (int x, int y, GameConstant gameConstant) {
+	for(int i = 0; i < 15; i++) {
+		if(sqrt(pow((x - ball[i].position.x),2) + pow((y - ball[i].position.y),2))) {
+			return true;
+		}
+	}
+	return false;
+}
+
 TableState TableState::update (int ms)
 {	
 	TableState temp = (*this);

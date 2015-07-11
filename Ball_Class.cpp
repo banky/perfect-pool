@@ -61,7 +61,3 @@ void Ball::tableCollision() {
 		position.y += y_speed * dt;
 	}
 }
-
-
-
-

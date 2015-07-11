@@ -1,4 +1,7 @@
 main.cpp
 *.hpp.gch
+*.h.gch
 *.o
 a.out
+output
+test

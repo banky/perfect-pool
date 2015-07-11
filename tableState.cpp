@@ -12,6 +12,7 @@ TableState TableState::update (int ms)
 			
 		}
 	}
+	return temp;
 }
 
 TableState::TableState() {

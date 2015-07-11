@@ -61,11 +61,27 @@ void Ball::tableCollision() {
 	}
 }
 
-void Ball::velocityToGetBallIn (TableState tableState) {
-    int length = sizeof(tableState.holes)/sizeof(tablState.holes[0]);
-	for (int i = 0; i < length; i++) {
-		
-	
+double velocityFromDistance(int distance) {
+	//assume ball needs to sink within 5 seconds
+	//math and shit
+	//note log is actually ln
+	return (distance + (0.5 * log(5))) / 5.0;
+}
+
+//shots should have length 6
+void Ball::velocityToGetBallIn (TableState tableState, Shot* shots) {
+	GameConstant gc = GameConstant.getInstance();
+	for (int i = 0; i < 6; i++) {
+		Hole hole = tablestate.holes[i];
+		if(!isBallInLine(hole, tableState) {
+			int dx = this.position.x - hole.position.x;
+			int dy = this.position.y - hole.position.y;
+			
+			double vx = velocityFromDistance(dx);
+			double vy = velocityFromDistance(dy);
+			
+			shots[i] = Shot(vx, vy, Position());
+		}
 	}
 }
 

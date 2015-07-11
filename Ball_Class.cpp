@@ -35,6 +35,10 @@ int Ball::getRadius() {
 	return radius;
 }
 
+void getInitialHit(Ball b) {
+	
+}
+
 void Ball::ballCollision(Ball b) {
 	int d = sqrt(pow((position.x - b.position.x),2) + pow((position.y - b.position.y), 2));
 	int nx = (b.position.x - position.x)/d;

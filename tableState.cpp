@@ -2,6 +2,11 @@
 #include "Ball_Class.hpp"
 #include "Hole.hpp"
 #include <cmath>
+
+int tableLength;
+int tableWidth;
+
+
 bool TableState::collisionWall (Ball b)
 {
 	
@@ -73,6 +78,19 @@ TableState TableState::update (int ms)
 				balls[i].x_speed = 0;
 			if (balls[i].y_speed <= gc.VelocityThreshold())
 				balls[i].y_speed = 0;
+			
+			for(int j = 0; j < 6; j++) {
+				if(sqrt(pow((balls[i].position.x - holes[j].position.x),2) + pow((balls[i].position.y - holes[j].position.y),2))){
+					if(balls[i].get_id() == 1) {
+						balls[i].position.x = rand() % tableLength + (tableLength/2);
+						balls[i].position.x = rand() %tableWidth;
+					}
+					balls[i].x_speed = 0;
+					balls[i].y_speed = 0;
+					balls[i].position.x = -10;
+					balls[i].position.y = -10;
+				}
+			}
 			/*
 				1- if ball is in hole 
 					set speed to 0,0 
@@ -80,9 +98,11 @@ TableState TableState::update (int ms)
 				2- if white is in whole- ID of one 
 					set new location
 			*/
-		}		
+		}
 	}
 }
+
+
 
 TableState::TableState() {
 	holes = new Hole[6];

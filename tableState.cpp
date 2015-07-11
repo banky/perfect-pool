@@ -49,10 +49,10 @@ Ball TableState::whoHit (int v)
 }
 
 TableState TableState::update (int ms)
-{	int ctime = TableState::c_time;
-	TableState temp;
-	if (ms > ctime)
-	for(int cms=ctime; cms<ms; cms++)
+{	
+	TableState temp = (*this);
+	
+	for(int cms=0; cms<ms; cms++)
 	{
 		for(int i=0;i<15;i++)
 		{

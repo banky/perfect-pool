@@ -96,7 +96,7 @@ TableState TableState::update (int ms)
 						balls[i].position.x = rand() %tableWidth;
 					
 						//If the ball is on another ball, try to place it elsewhere
-						while(ballIsOnAnother(balls[i].position.x, balls[i].position.y)) {	
+						while(ballIsOnAnother(balls[i].position.x, balls[i].position.y, GameConstant gc)) {	
 							balls[i].position.y = rand() % tableLength + (tableLength/2);
 							balls[i].position.x = rand() %tableWidth;
 						}

@@ -2,5 +2,5 @@
 
 TableState::TableState() {
 	holes = new Position[6];
-	holes = new Position[11];
+	balls = new Position[11];
 }

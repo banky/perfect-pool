@@ -66,9 +66,15 @@ TableState TableState::update (int ms)
 			{
 				balls[i].ballCollision(whoHit(i));
 			}
-		}
+			balls[i].x_speed-= (gc.Alpha()*pow(balls[i].x_speed,2));
+			balls[i].y_speed-= (gc.Alpha()*pow(balls[i].y_speed,2));
+			
+			if (balls[i].x_speed <= gc.VelocityThreshold())
+				balls[i].x_speed = 0;
+			if (balls[i].y_speed <= gc.VelocityThreshold())
+				balls[i].y_speed = 0;
+		}		
 	}
-	return temp;
 }
 
 TableState::TableState() {

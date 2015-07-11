@@ -1,11 +1,6 @@
 #include <iostream>
 #include "shot.h"
-#include "Ball_Class.hpp"
-#include "position.hpp"
-#include "GameConstant.hpp"
-#include <sstream>
-#include <vector>
-
+#include "tableState.hpp"
 using namespace std;
 
 void output (ostream &out, Shot* shots, int length)
@@ -19,36 +14,34 @@ void output (ostream &out, Shot* shots, int length)
 		<< ", " << s.resetPosition.y << "]\n";
 	}
 }
-
-Ball getBallFromInput(istream& in, int ballNum) {
-	char c = 'l';
-	while(c!='[') {
-		in >> c;
+//Check if there is a ball between our current ball and a hole
+/*
+bool isBallInLine (Hole hole, TableState tableState) {
+	int length = sizeof((tableState.getBall))/sizeof((tableState.getBall)[0]);
+	int distanceToHole = sqrt(pow((position.x - hole.position.x),2) + pow((position.y - hole.position.y),2));
+	int distanceInX = hole.position.x - position.x;
+	int distanceInY = hole.position.y - position.y;
+	for(int i = 0; i < length; i++) {
+		int tempBallX = position.x;
+		int tempBallY = position.y;
+		while(pow((tempBallX - hole.position.x),2) + pow((tempBallY - hole.position.y),2) <= pow((radius - holeRadius),2)) {
+			if(pow((tempBallX - tableState.balls[i]) {
+				
+			}
+			//Use a base value as 1mm
+			tempBallX += distanceInX/distanceToHole;
+			tempBallY += distanceInY/distanceToHole;
+		}
+				
 	}
-	int x, y, z;
-	in >> x >> c >> y >> c >> z;
-	Ball b(x, y, z, ballNum);
-	
 }
 
-void extractFileInput(istream& in, GameConstant* gc, vector<Ball>* balls) {
-	double alpha = getNextDouble(in);
-	double dt = getNextDouble(in);
-	double vel_thresh = getNextDouble(in);
+void Ball::velocityToGetBallIn (TableState tableState) {
+    int length = sizeof(tableState.holes)/sizeof(tablState.holes[0]);
+	for (int i = 0; i < length; i++) {
+		
 	
-	int numShots = getNextInt(in);
-	int maxXVel = getNextInt(in);
-	int maxYVel = getNextInt(in);
-	
-	int width = getNextInt(in);
-	int length = getNextInt(in);
-	int b_radius = getNextInt(in);
-	int pocket_radius = getNextInt(in);
-	int pocket_offset = getNextInt(in);
-	
-	*gc = GameConstant(alpha, dt, vel_thresh, numShots, maxXVel, maxYVel,
-	width, length, b_radius, pocket_radius, pocket_offset);
-	
-	for(int i = 1; i < 16; i++)
-		balls->push_back(getBallFromInput(in, i));
-}
+	}
+*/
+
+

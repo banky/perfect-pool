@@ -1,6 +1,7 @@
 #ifndef BALLAR
 #define BALLAR
 #include "Position.hpp"
+#include "Hole.hpp"
 
 class Ball 
 {

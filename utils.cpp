@@ -1,9 +1,10 @@
 #include <iostream>
 #include "shot.h"
 #include "Ball_Class.hpp"
-#include "position.h"
-#include "GameConstants.hpp"
+#include "position.hpp"
+#include "GameConstant.hpp"
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -49,11 +50,7 @@ Ball getBallFromInput(istream& in, int ballNum) {
 	
 }
 
-void extractFileInput(istream& in, GameConstants* gc, vector<Ball>* balls) {
-	GameConstants gc;
-	string s;
-	s = getNextNumber(in);
-	s = s.substr();
+void extractFileInput(istream& in, GameConstant* gc, vector<Ball>* balls) {
 	double alpha = getNextDouble(in);
 	double dt = getNextDouble(in);
 	double vel_thresh = getNextDouble(in);
@@ -68,6 +65,9 @@ void extractFileInput(istream& in, GameConstants* gc, vector<Ball>* balls) {
 	int pocket_radius = getNextInt(in);
 	int pocket_offset = getNextInt(in);
 	
-	balls->push_to_back(getBallFromInput(in));
+	*gc = GameConstant(alpha, dt, vel_thresh, numShots, maxXVel, maxYVel,
+	width, length, b_radius, pocket_radius, pocket_offset);
 	
+	for(int i = 1; i < 16; i++)
+		balls->push_back(getBallFromInput(in, i));
 }

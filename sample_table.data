@@ -1,0 +1,41 @@
+# system variables
+alpha=0.0001
+# time difference between each loop iteration
+dt=0.001
+# when x and y velocty components of are less than vel_threshold the shot is over
+vel_threshold=250.0
+# max number of shots, can be risregarded
+num_shots=10
+
+#in mm/s
+# shots exceeding these velocities will be penalized
+max_x_vel=5000
+max_y_vel=5000
+
+#in mm
+# table vars
+# variables related to Figure 1 of Design Problem
+width=2700
+length=5400
+b_radius=50
+pocket_radius=100
+pocket_offset=40
+
+
+# ball [x,y] positions and [score]
+# positions in mm, (0, 0) is the top-left corner of your co-ord system
+[1420, 200, 1]
+[1310, 200, 2]
+[1200, 200, 3]
+[1090, 200, 4]
+[980, 200, 5]
+[1365, 356, 6]
+[1255, 356, 7]
+[1145, 356, 8]
+[1035, 356, 9]
+[1310, 512, 10]
+[1200, 512, 11]
+[1090, 512, 12]
+[1255, 668, 13]
+[1145, 668, 14]
+[1200, 824, 15]

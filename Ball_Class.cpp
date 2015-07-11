@@ -1,6 +1,7 @@
 #include "Ball_Class.hpp"
 #include <cmath>
 
+<<<<<<< HEAD
 //TODO: I'm not too sure how to get the mass value
 int mass;
 
@@ -25,7 +26,7 @@ int ball::get_id () {
 	return id;
 }
 ball::ball (int x1, int y, int v,int i) {
-    x = position(x1,y);
+    position = Position(x1,y);
 	value = v;
 	id =i;
 }

@@ -1,12 +1,15 @@
 #ifndef TABLESTATECLASS
 #define TABLESTATECLASS
 
+#include "position.hpp"
+
 class TableState {
 	public: 
 		TableState();
+		TableState update (int t);
 	private:
-		Position * holes;
-		Position * balls;
+		Position* holesT;
+		Position* ballsT;
 };
 
 #endif

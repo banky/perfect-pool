@@ -14,6 +14,6 @@ class ball
 		
 	private:
 		int x_speed,y_speed,value,id;
-		postion x;
+		Position x;
 };
 #endif

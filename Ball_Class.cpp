@@ -62,15 +62,14 @@ void Ball::tableCollision() {
 }
 
 void Ball::velocityToGetBallIn (TableState tableState) {
-    int length = sizeof(tableState.holes)/sizeof(tablState.holes[0]);
-	for (int i = 0; i < length; i++) {
+	for (int i = 0; i < 6; i++) {
 		
 	
 	}
 }
 
 //Check if there is a ball between our current ball and a hole
-bool Ball::isBallInLine (Hole hole, TableState tableState) {
+bool Ball::isLineFree (Hole hole, TableState tableState) {
 	int length = sizeof(tableState.balls)/sizeof(tableState.balls[0]);
 	int distanceToHole = sqrt(pow((position.x - hole.position.x),2) + pow((position.y - hole.position.y),2));
 	int distanceInX = hole.position.x - position.x;
@@ -78,15 +77,15 @@ bool Ball::isBallInLine (Hole hole, TableState tableState) {
 	for(int i = 0; i < length; i++) {
 		int tempBallX = position.x;
 		int tempBallY = position.y;
-		while(pow((tempBallX - hole.position.x),2) + pow((tempBallY - hole.position.y),2) <= pow((radius - holeRadius),2)) {
-			if(pow((tempBallX - tableState.balls[i]) {
-				
+		while(sqrt(pow((position.x - hole.position.x),2) + pow((position.y - hole.position.y),2)) <= holeRadius) {
+			if(pow((tempBallX - tableState.balls[i].position.x),2) < radius*2) {
+				return false;
 			}
 			//Use a base value as 1mm
 			tempBallX += distanceInX/distanceToHole;
 			tempBallY += distanceInY/distanceToHole;
-		}
-				
+		}	
 	}
+	return true;
 }
 

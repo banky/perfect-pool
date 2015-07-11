@@ -7,8 +7,8 @@ class Ball
 	public:	
 		Ball (int x1, int y, int v,int i);
 		Ball ();
-		int get_x_speed ();
-		int get_y_speed ();
+		int x_speed,y_speed;
+		Position position;
 		int get_value ();
 		int get_postion ();
 		int get_id ();
@@ -16,7 +16,7 @@ class Ball
 		void ballCollision(Ball b);		
 		void tableCollision();
 	private:
-		int x_speed,y_speed,value,id,radius;
-		Position position;
+		int value,id,radius;
+		
 };
 #endif

@@ -14,12 +14,6 @@ Ball::Ball()
 {
 	
 }
-int Ball::get_x_speed () {
-    return x_speed;
-}
-int Ball::get_y_speed () {
-    return y_speed;
-}
 int Ball::get_value () {
 	return value;
 }

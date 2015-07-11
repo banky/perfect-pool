@@ -2,14 +2,36 @@
 #include "Ball_Class.hpp"
 #include "Hole.hpp"
 
-TableState TableState::update (int ms)
+bool collisionWall (Ball b)
 {
+	
+}
+bool collisionBall (Ball b)
+{
+	
+}
+Ball whoHit ()
+{
+	
+}
+TableState TableState::update (int ms)
+{	int ctime = TableState::c_time;
 	TableState temp;
-	for(int cms=0; cms<ms; cms++)
+	if (ms > ctime)
+	for(int cms=ctime; cms<ms; cms++)
 	{
 		for(int i=0;i<10;i++)
 		{
-			
+			balls[i].position.x += balls[i].x_speed;
+			balls[i].position.y += balls[i].y_speed;
+			if (collisionWall(balls[i]))
+			{
+				balls[i].ballCollision(whoHit());
+			}
+			else if (collisionBall(balls[i]))
+			{
+				balls[i].tableCollision();
+			}
 		}
 	}
 }

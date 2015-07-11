@@ -2,6 +2,11 @@
 #include "Ball_Class.hpp"
 #include "Hole.hpp"
 #include <cmath>
+
+int tableLength;
+int tableWidth;
+
+
 bool TableState::collisionWall (Ball b)
 {
 	
@@ -35,15 +40,15 @@ Ball TableState::whoHit (int v)
 	int r = balls[v].getRadius();
 	for(int i=0; i <v; i++)
 	{
-		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r)
-			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r)
+		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r+2)
+			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r+2)
 				return balls[i];
 		
 	}
 	for(int i =15; i>v;i--)
 	{
-		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r)
-			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r)
+		if (abs(balls[i].position.x - balls[v].position.x) <= 2*r+2)
+			if (abs(balls[i].position.y - balls[v].position.y) <= 2*r+2)
 				return balls[i];
 	}
 }
@@ -73,9 +78,31 @@ TableState TableState::update (int ms)
 				balls[i].x_speed = 0;
 			if (balls[i].y_speed <= gc.VelocityThreshold())
 				balls[i].y_speed = 0;
-		}		
+			
+			for(int j = 0; j < 6; j++) {
+				if(sqrt(pow((balls[i].position.x - holes[j].position.x),2) + pow((balls[i].position.y - holes[j].position.y),2))){
+					if(balls[i].get_id() == 1) {
+						balls[i].position.x = rand() % tableLength + (tableLength/2);
+						balls[i].position.x = rand() %tableWidth;
+					}
+					balls[i].x_speed = 0;
+					balls[i].y_speed = 0;
+					balls[i].position.x = -10;
+					balls[i].position.y = -10;
+				}
+			}
+			/*
+				1- if ball is in hole 
+					set speed to 0,0 
+					location to -1,-1
+				2- if white is in whole- ID of one 
+					set new location
+			*/
+		}
 	}
 }
+
+
 
 TableState::TableState() {
 	holes = new Hole[6];

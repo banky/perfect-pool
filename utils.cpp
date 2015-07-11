@@ -17,22 +17,21 @@ void output (ostream &out, Shot* shots, int length)
 //Check if there is a ball between our current ball and a hole
 
 bool isBallInLine (Hole hole, TableState tableState) {
-	int length = sizeof((tableState.getBall))/sizeof((tableState.getBall)[0]);
+	int length = sizeof(tableState.balls)/sizeof(tableState.balls[0]);
 	int distanceToHole = sqrt(pow((position.x - hole.position.x),2) + pow((position.y - hole.position.y),2));
 	int distanceInX = hole.position.x - position.x;
 	int distanceInY = hole.position.y - position.y;
 	for(int i = 0; i < length; i++) {
 		int tempBallX = position.x;
 		int tempBallY = position.y;
-		while(pow((tempBallX - hole.position.x),2) + pow((tempBallY - hole.position.y),2) <= pow((radius - holeRadius),2)) {
-			if(pow((tempBallX - tableState.balls[i]) {
-				
+		while(sqrt(pow((position.x - hole.position.x),2) + pow((position.y - hole.position.y),2)) <= holeRadius) {
+			if(pow((tempBallX - tableState.balls[i].position.x),2) < radius*2) {
+				return false;
 			}
 			//Use a base value as 1mm
 			tempBallX += distanceInX/distanceToHole;
 			tempBallY += distanceInY/distanceToHole;
-		}
-				
+		}	
 	}
 }
 
@@ -62,6 +61,7 @@ void velocityToGetBallIn (Ball ball, Hole hole, int* velXOut, int* velYOut) {
 		velXOut = 0;
 		velYOut = 0;
 	}
+
 }
 
 

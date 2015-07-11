@@ -2,10 +2,10 @@
 #define BALLAR
 #include "Position.hpp"
 
-class ball 
+class Ball 
 {
 	public:	
-		ball (int x1, int y, int v,int i);
+		Ball (int x1, int y, int v,int i);
 		int get_x_speed ();
 		int get_y_speed ();
 		int get_value ();

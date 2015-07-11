@@ -16,4 +16,6 @@ TableState TableState::update (int ms)
 TableState::TableState() {
 	holesT = new holes [6];
 	ballsT = new ball  [11];
+	holes = new Position[6];
+	balls = new Position[11];
 }

@@ -15,15 +15,4 @@ void output (ostream &out, Shot* shots, int length)
 	}
 }
 
-struct holes
-{
-	holes (Position in, int r1);
-	Position i;
-	int r;
-};
 
-holes::holes (Position in, int r1)
-{
-	i = in; 
-	r = r1; 
-}

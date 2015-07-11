@@ -6,6 +6,7 @@ class Position {
 		Position(int xcoord, int ycoord);
 		int x;
 		int y;
+		Position();
 };
 
 #endif

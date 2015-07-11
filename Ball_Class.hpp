@@ -6,15 +6,17 @@ class Ball
 {
 	public:	
 		Ball (int x1, int y, int v,int i);
-		int get_x_speed ();
-		int get_y_speed ();
+		Ball ();
+		int x_speed,y_speed;
+		Position position;
 		int get_value ();
 		int get_postion ();
 		int get_id ();
 		int getRadius();
-		void ball_collision(ball b);		
+		void ballCollision(Ball b);		
+		void tableCollision();
 	private:
-		int x_speed,y_speed,value,id,radius;
-		Postion position;
+		int value,id,radius;
+		
 };
 #endif
